@@ -10,10 +10,6 @@
     #include "lib.h"
 #endif
 
-//Locations
-/*
-    pathway 1 | 0, 1, 2, 
-*/
 
 int main(void) {
 
