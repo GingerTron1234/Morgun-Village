@@ -77,8 +77,17 @@ int main(void) {
             case 2:
                 choice2();
                 break;
+            case 3:
+                choice3();
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
         }
     }
+
+    health > 0 ? printf("\n\nThe End.") : printf("\n\nYou Died.");
 
     return 1;
 }

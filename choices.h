@@ -9,6 +9,10 @@
     #include "lib.h"
 #endif
 
+/*
+    This file holds all the choices and global variables in it.
+*/
+
 #define NAMELIMIT 15
 
 //Player Variables
@@ -22,6 +26,8 @@
     char end = 0;
     unsigned long choice = 0; //Calls the right function based on where you are in the array
     char response[50]; //String Response
+
+//######################################################################################################################################################
 
 void choiceStart(void) {
 
@@ -48,11 +54,21 @@ void choiceStart(void) {
             over = 0;
             printCommands();
         }
+        else if(!strcmp(response, "rules")) {
+            over = 0;
+            printRules();
+        }
         else if(!strcmp(response, "okusa")) {
             over = 0;
             money++;
+            health++;
             printf("\"OK, USA.\"\n");
             printStats();
+        }
+        else if(!strcmp(response, "kill me")) {
+            over = 0;
+            money++;
+            loseHealth(500);
         }
         else {
             printf("\nEnter a valid response.");
@@ -61,9 +77,10 @@ void choiceStart(void) {
     } while(!over);
 }
 
+//######################################################################################################################################################
 
 void choice1(void) {
-        printf("\nYou look through the forest and see a light in the distance.\nWould you like to go towards it or go back to the path?");
+        printf("\nYou look through the forest and see a dim light in the distance.\nWould you like to go towards it or go back to the path?");
         do{
             
             printf("\n\033[0;36m(Light / Path): \033[0m");
@@ -72,6 +89,7 @@ void choice1(void) {
 
             if(!strcmp(response, "light")) {
                 over = 1;
+                choice = 3;
             }
             else if(!strcmp(response, "path")) {
                 over = 1;
@@ -91,6 +109,8 @@ void choice1(void) {
             }
         } while(!over);
 }
+
+//######################################################################################################################################################
 
 void choice2(void) {
         printf("\nYou walk down the path for about 4 minutes before seeing the front entrance of a village.\n");
@@ -119,9 +139,57 @@ void choice2(void) {
                 over = 0;
                 printCommands();
             }
+            else if(!strcmp(response, "rules")) {
+                over = 0;
+                printRules();
+            }
+            else if(!strcmp(response, "rules")) {
+                over = 0;
+                printRules();
+            }    
             else {
                 printf("\nEnter a valid response.");
                 over = 0;
             }
         } while(!over);
     }
+
+//######################################################################################################################################################
+
+void choice3(void) {
+        printf("\nYou walk through the forest towards the bright light.\n");
+        printf("Since you were focused on the light you ended up stumbling and scraping your knee.\n");
+        loseHealth(1);
+        printf("");
+
+        printf("Would you like to go towards the noise or hide in one of the houses?");
+        do{
+            
+            printf("\n\033[0;36m(Noise / House): \033[0m");
+            getLine(response, 50);
+            lower(response);
+
+            if(!strcmp(response, "noise")) {
+                over = 1;
+            }
+            else if(!strcmp(response, "house")) {
+                over = 1;
+            }
+            else if(!strcmp(response, "check")) {
+                over = 0;
+                printStats();
+            }
+            else if(!strcmp(response, "help")) {
+                over = 0;
+                printCommands();
+            }
+            else if(!strcmp(response, "rules")) {
+                over = 0;
+                printRules();
+            }
+            else {
+                printf("\nEnter a valid response.");
+                over = 0;
+            }
+        } while(!over);
+}

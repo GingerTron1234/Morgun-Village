@@ -4,6 +4,10 @@
     #include "choices.h"
 #endif
 
+/*
+    This file holds all the miscellaneous functions I need.
+*/
+
 char get1() {
 
     char c[50], temp;
@@ -48,6 +52,8 @@ void lower(char s[]) {
     }
 }
 
+//Printing Commands
+
 void printBorder(void) {
 
     printf("##############################################\n");
@@ -62,6 +68,18 @@ void printStats(void) {
     printBorder();
 }
 
+void printRules(void) {
+
+    printBorder();
+
+    printf("\nList of rules:\n\n");
+    //Death
+    printf("Death: If your health reaches 0 at the end of a turn you die\n");
+    printf("You can still heal before the turn ends to avoid bleeding out and dying.\n");
+
+    printBorder();
+}
+
 void printCommands(void) {
     
     printBorder();
@@ -69,10 +87,41 @@ void printCommands(void) {
     printf("\nList of commands:\n\n");
     printf("Check: Displays a list of your current stats such as strength, health, ect.\n");
     printf("Help: Displays a list of the commands.\n");
+    printf("Rules: Displays a list of rules for the game.\n");
 
 
     printf("\nColors: \n\n");
-    printf("\033[0;36m#\033[0m = A question awaiting input.\n\033[0;33m#\033[0m = Text that was inputted by you.\n\n");
+    printf("\033[0;36m#\033[0m = A question awaiting input.\n\033[0;33m#\033[0m = Text that was inputted by you.\n");
+    printf("\033[0;31m#\033[0m = You lost health.\n\033[0;32m#\033[0m = You gained health.\n\n");
 
     printBorder();
+}
+
+void printHealth(void) {
+
+    extern int health;
+    printf("\nYou have %d health.\n");
+}
+
+
+//Gain / Lose health
+void loseHealth(int amount) {
+
+    extern int health;
+    extern char end;
+
+    printf("\033[0;31m-%d health.\033[0m\n", amount);
+    health -= amount;
+    (health>0) ? end = 0 : (end = 1);
+}
+
+void gainHealth(int amount) {
+
+    extern int health;
+    extern char end;
+
+    printf("\033[0;33m+%d health.\033[0m\n", amount);
+    health += amount;
+    (health > 0) ? end = 0 : (end = 1);
+    
 }
