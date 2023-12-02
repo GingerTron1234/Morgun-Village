@@ -19,7 +19,7 @@ int main(void) {
 
     //Player Variables
     extern char name[];
-    extern int health, strength, money;
+    extern int health, strength;
 
 
     printCommands();
@@ -62,8 +62,6 @@ int main(void) {
     } while(!over);
 #pragma endregion
 
-    printf("\nYou wake up in a dark forest.\nAll you can remember is that your name is \033[0;33m%s\033[0m.\n", name); //weird text is to change the color of the text.
-
 
     //GameLoop
     while(!end) {
@@ -81,6 +79,7 @@ int main(void) {
                 choice3();
                 break;
             case 4:
+                choice4();
                 break;
             case 5:
                 break;

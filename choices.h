@@ -31,6 +31,8 @@
 
 void choiceStart(void) {
 
+    printf("\nYou wake up in a dark forest.\nAll you can remember is that your name is \033[0;33m%s\033[0m.\n", name); //weird text is to change the color of the text.
+    printf("You look around and see the start of a path being bordered by a forest.\n");
     printf("Would you like to walk down the path or look through the forest?");
     do{
         
@@ -103,6 +105,10 @@ void choice1(void) {
                 over = 0;
                 printCommands();
             }
+            else if(!strcmp(response, "rules")) {
+                over = 0;
+                printRules();
+            }
             else {
                 printf("\nEnter a valid response.");
                 over = 0;
@@ -130,6 +136,7 @@ void choice2(void) {
             }
             else if(!strcmp(response, "house")) {
                 over = 1;
+                choice = 4;
             }
             else if(!strcmp(response, "check")) {
                 over = 0;
@@ -192,4 +199,48 @@ void choice3(void) {
                 over = 0;
             }
         } while(!over);
+}
+
+//######################################################################################################################################################
+
+void choice4(void) {
+    printf("\nWhile you're walking towards the house the door suddenly whips open revealing a 50 year old man wearing one of those irish hats.\n");
+    printf("He takes one step out the door while saying come here quick, it's coming, it's coming\n");
+    printf("You run towards him and right as you enter the house he closes the door behind you and locks it.\n");
+    printf("\"Are you armed\" The old man said in a panicked voice while scrummaging throughout the house looking for something.\n");
+    printf("\nWhat will you say");
+    do{
+            
+        printf("\n\033[0;36m(1. Yeah, and I'm gonna kill you. / 2. No I'm not. / 3. What's going on.): \033[0m");
+        getLine(response, 50);
+        lower(response);
+
+        if(!strcmp(response, "1")) {
+            over = 1;
+            printf("The villager stares at you in shock before he shoots you in the heart with a gun he pulls from out of a drawer.\n");
+            loseHealth(20);
+        }
+        else if(!strcmp(response, "2")) {
+            over = 1;
+        }
+        else if(!strcmp(response, "3")) {
+            over = 1;
+        }
+        else if(!strcmp(response, "check")) {
+            over = 0;
+            printStats();
+        }
+        else if(!strcmp(response, "help")) {
+            over = 0;
+            printCommands();
+        }
+        else if(!strcmp(response, "rules")) {
+            over = 0;
+            printRules();
+        }
+        else {
+            printf("\nEnter a valid response.");
+            over = 0;
+        }
+    } while(!over);
 }

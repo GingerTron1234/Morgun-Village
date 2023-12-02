@@ -64,7 +64,7 @@ void printStats(void) {
     extern int health, strength, money;
     printBorder();
     printf("\nStats:\n\n");
-    printf("Health: %d\nStrength: %d\nMoney: %d\n\n", health, strength, money);
+    printf("Health: %d\nStrength: %d\n\n", health, strength);
     printBorder();
 }
 
@@ -74,8 +74,11 @@ void printRules(void) {
 
     printf("\nList of rules:\n\n");
     //Death
-    printf("Death: If your health reaches 0 at the end of a turn you die\n");
+    printf("Death: If your health reaches 0 at the end of a turn you die.\n");
     printf("You can still heal before the turn ends to avoid bleeding out and dying.\n");
+    //Input
+    printf("Input: If the game asked you to enter two separate words such as in (Yes / No). You can enter the word with or without capitalization.\n");
+    printf("If the game asks you to say dialog you must enter the number to the left of the dialog such as in (1. Hello / 2. I'm gonna die).\n");
 
     printBorder();
 }
@@ -85,7 +88,7 @@ void printCommands(void) {
     printBorder();
 
     printf("\nList of commands:\n\n");
-    printf("Check: Displays a list of your current stats such as strength, health, ect.\n");
+    printf("Check: Displays a list of your current stats such as health, strength, ect.\n");
     printf("Help: Displays a list of the commands.\n");
     printf("Rules: Displays a list of rules for the game.\n");
 
